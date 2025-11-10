@@ -359,12 +359,29 @@ footer{
 <section id="contact">
   <h2>Contact Us</h2>
   <div class="grid contact">
+    
+    <!-- Contact Information + Map -->
     <div class="card">
       <h3>Get in Touch</h3>
-      <p>Email: <a href="mailto:info@tiastech.in">info@tiastech.in</a></p>
-      <p>Phone: +91-9475207611</p>
-      <p>Address: South Ektisal, Siliguri, India, West Bengal</p>
+      <p><strong>Email:</strong> <a href="mailto:info@tiastech.in">info@tiastech.in</a></p>
+      <p><strong>Phone:</strong> +91-9475207611</p>
+      <p><strong>Address:</strong> South Ektisal, Siliguri, West Bengal, India</p>
+      
+      <!-- Embedded Google Map -->
+      <div style="margin-top:1rem;">
+        <iframe 
+          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d14406.99638529347!2d88.4539465!3d26.720833!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x39e4411096f858b3%3A0x2e16c1f3d4fdce3c!2sTIAS!5e0!3m2!1sen!2sin!4v1731222000000!5m2!1sen!2sin" 
+          width="100%" 
+          height="300" 
+          style="border:0; border-radius:10px;" 
+          allowfullscreen="" 
+          loading="lazy" 
+          referrerpolicy="no-referrer-when-downgrade">
+        </iframe>
+      </div>
     </div>
+
+    <!-- Contact Form -->
     <div class="card">
       <h3>Send a Message</h3>
       <form action="https://formspree.io/f/xdkpanaw" method="POST">
@@ -375,8 +392,10 @@ footer{
         <button type="submit">Send Message</button>
       </form>
     </div>
+
   </div>
 </section>
+
 
 <footer>
   <p>© 2025 TIAS. All Rights Reserved. | <a href="#">Privacy Policy</a></p>
@@ -409,6 +428,7 @@ menuToggle.addEventListener('click',()=>{navbar.classList.toggle('active');});
 
 </body>
 </html>
+
 
 
 
