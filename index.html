@@ -7,13 +7,13 @@
 <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
 
 <style>
-/* Global Styles */
+/* ---------- Global Styles ---------- */
 *{margin:0;padding:0;box-sizing:border-box;font-family:'Roboto',sans-serif;}
 body{background:#0a1128;color:#e0e0e0;scroll-behavior:smooth;line-height:1.6;}
 a{text-decoration:none;color:inherit;}
 img{max-width:100%;display:block;border-radius:10px;height:auto;}
 
-/* Header */
+/* ---------- Header ---------- */
 header{
   background:rgba(0,0,0,0.3);
   padding:0.6rem 1.2rem;
@@ -27,8 +27,7 @@ header{
   box-shadow:0 2px 15px rgba(0,0,0,0.5);
 }
 header .logo img{
-  width:60px;
-  border-radius:20%;
+  width:60px;border-radius:20%;
   transition:transform 0.8s,filter 0.5s;
   filter:drop-shadow(0 0 10px #2ea6b6);
 }
@@ -45,45 +44,44 @@ nav ul{
 nav ul li a{color:#2ea6b6;transition:0.3s;}
 nav ul li a:hover{color:#30a7b7;}
 
-/* Hamburger for mobile */
-.menu-toggle{
-  display:none;
-  flex-direction:column;
-  cursor:pointer;
-  gap:5px;
-}
-.menu-toggle span{
-  width:25px;height:3px;background:#2ea6b6;
-  border-radius:5px;transition:all 0.3s;
-}
+/* ---------- Mobile Menu ---------- */
+.menu-toggle{display:none;flex-direction:column;cursor:pointer;gap:5px;}
+.menu-toggle span{width:25px;height:3px;background:#2ea6b6;border-radius:5px;transition:all 0.3s;}
 
-/* Hero Section */
+/* ---------- Hero Section ---------- */
 .hero{
   display:flex;
   align-items:center;
   justify-content:center;
-  gap:2rem;
-  flex-wrap:wrap;
   padding:4rem 2rem;
-  background:radial-gradient(circle at top left,#375161,#0a1128);
+  min-height:100vh;
+  background:linear-gradient(135deg,#0a1128,#1a2d44);
+}
+.hero-container{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:3rem;
+  max-width:1300px;
+  width:100%;
+  flex-wrap:wrap;
 }
 .hero-content{
-  flex:1 1 350px;
-  max-width:600px;
-  text-align:justify;
-}
-.hero-content h1{
-  font-size:2.4rem;
-  margin-bottom:1rem;
-  color:#2ea6b6;
+  flex:1 1 500px;
   text-align:left;
 }
-.hero-content p{
-  font-size:1.05rem;
-  margin-bottom:1.5rem;
-  color:#c0e0ff;
+.hero-content h1{
+  font-size:2.6rem;
+  color:#29c3d1;
+  margin-bottom:1rem;
+  line-height:1.3;
 }
-.hero-content a.btn{
+.hero-content p{
+  font-size:1.1rem;
+  color:#cce8f3;
+  margin-bottom:1.8rem;
+}
+.hero-content .btn{
   padding:0.8rem 2rem;
   background:#2ea6b6;
   color:#021730;
@@ -93,18 +91,24 @@ nav ul li a:hover{color:#30a7b7;}
   transition:transform 0.3s,box-shadow 0.3s;
   display:inline-block;
 }
-.hero-content a.btn:hover{
+.hero-content .btn:hover{
   transform:scale(1.1);
   box-shadow:0 10px 25px rgba(46,166,182,0.8);
 }
-.hero img{
-  flex:1 1 300px;
-  max-width:400px;
-  border-radius:20px;
-  box-shadow:0 10px 30px rgba(46,166,182,0.5);
+.hero-image{
+  flex:1 1 500px;
+  text-align:center;
 }
+.hero-image img{
+  width:100%;
+  max-width:520px;
+  border-radius:20px;
+  box-shadow:0 10px 40px rgba(46,166,182,0.5);
+  transition:transform 0.4s ease;
+}
+.hero-image img:hover{transform:scale(1.05);}
 
-/* Section Titles */
+/* ---------- Sections ---------- */
 section{padding:3rem 1.5rem;max-width:1200px;margin:auto;text-align:center;}
 section h2{
   font-size:2rem;margin-bottom:1.5rem;color:#30a7b7;
@@ -115,7 +119,7 @@ section h2::after{
   background:#2ea6b6;margin:0.5rem auto;border-radius:3px;
 }
 
-/* Grid Cards */
+/* ---------- Grid Cards ---------- */
 .grid{
   display:grid;
   grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
@@ -137,7 +141,7 @@ section h2::after{
 .card h3{margin-bottom:0.5rem;color:#00e6e6;font-size:1.2rem;}
 .card p{font-size:0.95rem;text-align:justify;}
 
-/* Counter Section */
+/* ---------- Counters ---------- */
 .counters{
   display:flex;
   justify-content:center;
@@ -149,17 +153,10 @@ section h2::after{
 .counter{font-size:2.5rem;font-weight:bold;color:#2ea6b6;}
 .counter-label{font-size:1rem;color:#c0e0ff;}
 
-/* Carousel Reviews */
+/* ---------- Carousel ---------- */
 .carousel{overflow:hidden;width:100%;max-width:900px;margin:auto;position:relative;}
-.carousel-inner{
-  display:flex;
-  transition:transform 1s ease;
-}
-.carousel .card{
-  flex:0 0 100%;
-  box-sizing:border-box;
-  padding:2rem;
-}
+.carousel-inner{display:flex;transition:transform 1s ease;}
+.carousel .card{flex:0 0 100%;padding:2rem;}
 .carousel .card img{
   width:90px;height:90px;object-fit:cover;
   border-radius:50%;
@@ -167,14 +164,9 @@ section h2::after{
   border:3px solid #2ea6b6;
 }
 .stars{color:#ffcc00;margin-bottom:0.5rem;}
-.carousel .card p{
-  max-width:700px;
-  margin:auto;
-  text-align:justify;
-  color:#d8e8ff;
-}
+.carousel .card p{max-width:700px;margin:auto;text-align:justify;color:#d8e8ff;}
 
-/* Social */
+/* ---------- Social ---------- */
 #social img{
   width:55px;
   margin:auto;
@@ -183,7 +175,7 @@ section h2::after{
 }
 #social img:hover{transform:scale(1.2);}
 
-/* Contact */
+/* ---------- Contact ---------- */
 .contact input,.contact textarea{
   width:100%;
   padding:0.6rem;
@@ -205,7 +197,7 @@ section h2::after{
 }
 .contact button:hover{transform:scale(1.05);}
 
-/* Footer */
+/* ---------- Footer ---------- */
 footer{
   background:#375161;
   color:#2ea6b6;
@@ -215,7 +207,7 @@ footer{
   margin-top:2rem;
 }
 
-/* Responsive Design */
+/* ---------- Responsive ---------- */
 @media(max-width:992px){
   .menu-toggle{display:flex;}
   nav{
@@ -230,15 +222,10 @@ footer{
   }
   nav.active{display:flex;}
   nav ul{flex-direction:column;gap:1rem;}
-  .hero{
-    flex-direction:column;
-    text-align:center;
-    padding:3rem 1.5rem;
-  }
-  .hero img{order:1;margin:0 auto 1.5rem;max-width:320px;}
-  .hero-content{order:2;text-align:center;}
-  .hero-content h1{text-align:center;font-size:2rem;}
-  .carousel .card{padding:1.2rem;}
+  .hero-container{flex-direction:column;text-align:center;}
+  .hero-content{text-align:center;}
+  .hero-content h1{font-size:2.1rem;}
+  .hero-image img{max-width:360px;margin:auto;}
 }
 @media(max-width:600px){
   section{padding:2rem 1rem;}
@@ -440,6 +427,7 @@ menuToggle.addEventListener('click',()=>{navbar.classList.toggle('active');});
 
 </body>
 </html>
+
 
 
 
