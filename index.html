@@ -5,13 +5,54 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>TIAS - Modern Home & Security Solutions</title>
 <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
-
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
 <style>
 /* ---------- Global Styles ---------- */
 *{margin:0;padding:0;box-sizing:border-box;font-family:'Roboto',sans-serif;}
 body{background:#0a1128;color:#e0e0e0;scroll-behavior:smooth;line-height:1.6;}
 a{text-decoration:none;color:inherit;}
 img{max-width:100%;display:block;border-radius:10px;height:auto;}
+
+
+.flash-intro {
+  position: fixed;
+  top:0;left:0;
+  width:100%;
+  height:100%;
+  background: radial-gradient(circle, #021730 0%, #0a1128 80%);
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  flex-direction:column;
+  color:#2ea6b6;
+  z-index:9999;
+  overflow:hidden;
+}
+.flash-intro h1 {
+  font-size:2.2rem;
+  color:#29c3d1;
+  text-align:center;
+  text-transform:uppercase;
+  letter-spacing:2px;
+  opacity:0;
+}
+.flash-logo {
+  width:120px;
+  height:120px;
+  border-radius:50%;
+  margin-bottom:1rem;
+  border:3px solid #2ea6b6;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  box-shadow:0 0 25px #2ea6b6;
+  opacity:0;
+}
+.flash-logo img {
+  width:80px;
+  border-radius:50%;
+}
+
 
 /* ---------- Header ---------- */
 header{
@@ -241,6 +282,13 @@ footer{
 
 <body>
 
+<div class="flash-intro" id="flashIntro">
+  <div class="flash-logo">
+    <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhx5qd_VIv2EjrNhDrQYwr_Gw5OyS-wOVwNMRcADwyIWTyHOMU1NrSJAajQtH8Vsg1h0H1CNoGWlV7cs5FSNegTsjOtwzco14dCnp6ZiOc5mlxAHjT0y6lZS6KHqbOg53RsnQT7kFE4F9IJf0J77iOrowvt9xKX9CqdbsgJsxp60pfxcG_w-tWWsbHYHwal/s200/TIAS%20Logo.png" alt="TIAS Logo">
+  </div>
+  <h1>Technology Integrated Automated Solution<br>Modern Home & Security Solutions</h1>
+</div>
+
 <header>
   <div class="logo">
     <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhx5qd_VIv2EjrNhDrQYwr_Gw5OyS-wOVwNMRcADwyIWTyHOMU1NrSJAajQtH8Vsg1h0H1CNoGWlV7cs5FSNegTsjOtwzco14dCnp6ZiOc5mlxAHjT0y6lZS6KHqbOg53RsnQT7kFE4F9IJf0J77iOrowvt9xKX9CqdbsgJsxp60pfxcG_w-tWWsbHYHwal/s200/TIAS%20Logo.png" alt="TIAS Logo">
@@ -413,7 +461,15 @@ counters.forEach(counter=>{
     else counter.innerText=target+'+';}
   update();
 });
-
+// Flash intro animation
+window.addEventListener('load', () => {
+  const tl = gsap.timeline({ defaults: { ease: "power2.out" } });
+  tl.to(".flash-logo", { opacity: 1, scale: 1.2, duration: 1 })
+    .to(".flash-logo", { scale: 1, boxShadow: "0 0 40px #00e6e6", duration: 0.5 })
+    .to(".flash-intro h1", { opacity: 1, y: -10, duration: 1 }, "-=0.5")
+    .to(".flash-intro", { opacity: 0, duration: 1.2, delay: 1 })
+    .set(".flash-intro", { display: "none" });
+});
 /* Carousel Auto Slide */
 let i=0;
 const carousel=document.getElementById('reviewCarousel');
@@ -428,5 +484,3 @@ menuToggle.addEventListener('click',()=>{navbar.classList.toggle('active');});
 
 </body>
 </html>
-
-
