@@ -6,52 +6,12 @@
 <title>TIAS - Modern Home & Security Solutions</title>
 <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
 
-<!-- GSAP for animations -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
-
 <style>
+/* ---------- Global Styles ---------- */
 *{margin:0;padding:0;box-sizing:border-box;font-family:'Roboto',sans-serif;}
-body{background:#0a1128;color:#e0e0e0;scroll-behavior:smooth;overflow-x:hidden;}
-
-/* ---------- Flash Intro Animation ---------- */
-.flash-intro {
-  position: fixed;
-  top:0;left:0;
-  width:100%;
-  height:100%;
-  background: radial-gradient(circle, #021730 0%, #0a1128 80%);
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  flex-direction:column;
-  color:#2ea6b6;
-  z-index:9999;
-  overflow:hidden;
-}
-.flash-intro h1 {
-  font-size:2.2rem;
-  color:#29c3d1;
-  text-align:center;
-  text-transform:uppercase;
-  letter-spacing:2px;
-  opacity:0;
-}
-.flash-logo {
-  width:120px;
-  height:120px;
-  border-radius:50%;
-  margin-bottom:1rem;
-  border:3px solid #2ea6b6;
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  box-shadow:0 0 25px #2ea6b6;
-  opacity:0;
-}
-.flash-logo img {
-  width:80px;
-  border-radius:50%;
-}
+body{background:#0a1128;color:#e0e0e0;scroll-behavior:smooth;line-height:1.6;}
+a{text-decoration:none;color:inherit;}
+img{max-width:100%;display:block;border-radius:10px;height:auto;}
 
 /* ---------- Header ---------- */
 header{
@@ -84,10 +44,11 @@ nav ul{
 nav ul li a{color:#2ea6b6;transition:0.3s;}
 nav ul li a:hover{color:#30a7b7;}
 
+/* ---------- Mobile Menu ---------- */
 .menu-toggle{display:none;flex-direction:column;cursor:pointer;gap:5px;}
 .menu-toggle span{width:25px;height:3px;background:#2ea6b6;border-radius:5px;transition:all 0.3s;}
 
-/* ---------- Hero ---------- */
+/* ---------- Hero Section ---------- */
 .hero{
   display:flex;
   align-items:center;
@@ -96,10 +57,30 @@ nav ul li a:hover{color:#30a7b7;}
   min-height:100vh;
   background:linear-gradient(135deg,#0a1128,#1a2d44);
 }
-.hero-container{display:flex;align-items:center;justify-content:space-between;gap:3rem;max-width:1300px;width:100%;flex-wrap:wrap;}
-.hero-content{flex:1 1 500px;text-align:left;}
-.hero-content h1{font-size:2.6rem;color:#29c3d1;margin-bottom:1rem;line-height:1.3;}
-.hero-content p{font-size:1.1rem;color:#cce8f3;margin-bottom:1.8rem;}
+.hero-container{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:3rem;
+  max-width:1300px;
+  width:100%;
+  flex-wrap:wrap;
+}
+.hero-content{
+  flex:1 1 500px;
+  text-align:left;
+}
+.hero-content h1{
+  font-size:2.6rem;
+  color:#29c3d1;
+  margin-bottom:1rem;
+  line-height:1.3;
+}
+.hero-content p{
+  font-size:1.1rem;
+  color:#cce8f3;
+  margin-bottom:1.8rem;
+}
 .hero-content .btn{
   padding:0.8rem 2rem;
   background:#2ea6b6;
@@ -110,48 +91,155 @@ nav ul li a:hover{color:#30a7b7;}
   transition:transform 0.3s,box-shadow 0.3s;
   display:inline-block;
 }
-.hero-content .btn:hover{transform:scale(1.1);box-shadow:0 10px 25px rgba(46,166,182,0.8);}
-.hero-image{flex:1 1 500px;text-align:center;}
-.hero-image img{width:100%;max-width:520px;border-radius:20px;box-shadow:0 10px 40px rgba(46,166,182,0.5);transition:transform 0.4s ease;}
+.hero-content .btn:hover{
+  transform:scale(1.1);
+  box-shadow:0 10px 25px rgba(46,166,182,0.8);
+}
+.hero-image{
+  flex:1 1 500px;
+  text-align:center;
+}
+.hero-image img{
+  width:100%;
+  max-width:520px;
+  border-radius:20px;
+  box-shadow:0 10px 40px rgba(46,166,182,0.5);
+  transition:transform 0.4s ease;
+}
 .hero-image img:hover{transform:scale(1.05);}
 
 /* ---------- Sections ---------- */
 section{padding:3rem 1.5rem;max-width:1200px;margin:auto;text-align:center;}
-section h2{font-size:2rem;margin-bottom:1.5rem;color:#30a7b7;position:relative;display:inline-block;}
-section h2::after{content:"";display:block;width:50%;height:3px;background:#2ea6b6;margin:0.5rem auto;border-radius:3px;}
+section h2{
+  font-size:2rem;margin-bottom:1.5rem;color:#30a7b7;
+  position:relative;display:inline-block;
+}
+section h2::after{
+  content:"";display:block;width:50%;height:3px;
+  background:#2ea6b6;margin:0.5rem auto;border-radius:3px;
+}
 
-/* ---------- Grid ---------- */
-.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:1.5rem;}
-.card{background:linear-gradient(145deg,#375161,#2ea6b6);padding:1.2rem;border-radius:20px;box-shadow:0 10px 25px rgba(46,166,182,0.2);transition:transform 0.4s,box-shadow 0.4s;text-align:center;}
-.card:hover{transform:translateY(-8px);box-shadow:0 20px 40px rgba(46,166,182,0.5);}
+/* ---------- Grid Cards ---------- */
+.grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+  gap:1.5rem;
+}
+.card{
+  background:linear-gradient(145deg,#375161,#2ea6b6);
+  padding:1.2rem;
+  border-radius:20px;
+  box-shadow:0 10px 25px rgba(46,166,182,0.2);
+  transition:transform 0.4s,box-shadow 0.4s;
+  text-align:center;
+}
+.card:hover{
+  transform:translateY(-8px);
+  box-shadow:0 20px 40px rgba(46,166,182,0.5);
+}
 .card img{border-radius:15px;margin-bottom:1rem;}
 .card h3{margin-bottom:0.5rem;color:#00e6e6;font-size:1.2rem;}
 .card p{font-size:0.95rem;text-align:justify;}
 
-/* ---------- Footer ---------- */
-footer{background:#375161;color:#2ea6b6;text-align:center;padding:1.5rem;font-size:0.9rem;margin-top:2rem;}
+/* ---------- Counters ---------- */
+.counters{
+  display:flex;
+  justify-content:center;
+  flex-wrap:wrap;
+  gap:2rem;
+  margin-top:2rem;
+  text-align:center;
+}
+.counter{font-size:2.5rem;font-weight:bold;color:#2ea6b6;}
+.counter-label{font-size:1rem;color:#c0e0ff;}
 
+/* ---------- Carousel ---------- */
+.carousel{overflow:hidden;width:100%;max-width:900px;margin:auto;position:relative;}
+.carousel-inner{display:flex;transition:transform 1s ease;}
+.carousel .card{flex:0 0 100%;padding:2rem;}
+.carousel .card img{
+  width:90px;height:90px;object-fit:cover;
+  border-radius:50%;
+  margin:0 auto 1rem;
+  border:3px solid #2ea6b6;
+}
+.stars{color:#ffcc00;margin-bottom:0.5rem;}
+.carousel .card p{max-width:700px;margin:auto;text-align:justify;color:#d8e8ff;}
+
+/* ---------- Social ---------- */
+#social img{
+  width:55px;
+  margin:auto;
+  filter:drop-shadow(0 0 5px #2ea6b6);
+  transition:transform 0.3s;
+}
+#social img:hover{transform:scale(1.2);}
+
+/* ---------- Contact ---------- */
+.contact input,.contact textarea{
+  width:100%;
+  padding:0.6rem;
+  margin-bottom:1rem;
+  border-radius:5px;
+  border:1px solid #30a7b7;
+  background:#375161;
+  color:#e0e0e0;
+}
+.contact button{
+  padding:0.7rem 1.4rem;
+  background:#30a7b7;
+  border:none;
+  border-radius:50px;
+  color:#021730;
+  font-weight:bold;
+  cursor:pointer;
+  transition:0.3s;
+}
+.contact button:hover{transform:scale(1.05);}
+
+/* ---------- Footer ---------- */
+footer{
+  background:#375161;
+  color:#2ea6b6;
+  text-align:center;
+  padding:1.5rem;
+  font-size:0.9rem;
+  margin-top:2rem;
+}
+
+/* ---------- Responsive ---------- */
 @media(max-width:992px){
   .menu-toggle{display:flex;}
-  nav{position:absolute;top:80px;right:0;background:rgba(0,0,0,0.95);width:100%;display:none;flex-direction:column;text-align:center;padding:1rem 0;}
+  nav{
+    position:absolute;
+    top:80px;right:0;
+    background:rgba(0,0,0,0.95);
+    width:100%;
+    display:none;
+    flex-direction:column;
+    text-align:center;
+    padding:1rem 0;
+  }
   nav.active{display:flex;}
   nav ul{flex-direction:column;gap:1rem;}
   .hero-container{flex-direction:column;text-align:center;}
   .hero-content{text-align:center;}
+  .hero-content h1{font-size:2.1rem;}
+  .hero-image img{max-width:360px;margin:auto;}
+}
+@media(max-width:600px){
+  section{padding:2rem 1rem;}
+  .hero-content p{font-size:0.95rem;}
+  .card p{font-size:0.9rem;}
+  .counter{font-size:2rem;}
+  .carousel .card img{width:70px;height:70px;}
+  .carousel .card h3{font-size:1rem;}
+  .carousel .card p{font-size:0.9rem;}
 }
 </style>
 </head>
 
 <body>
-<!-- Flash Animation Overlay -->
-<div class="flash-intro" id="flashIntro">
-  <div class="flash-logo">
-    <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhx5qd_VIv2EjrNhDrQYwr_Gw5OyS-wOVwNMRcADwyIWTyHOMU1NrSJAajQtH8Vsg1h0H1CNoGWlV7cs5FSNegTsjOtwzco14dCnp6ZiOc5mlxAHjT0y6lZS6KHqbOg53RsnQT7kFE4F9IJf0J77iOrowvt9xKX9CqdbsgJsxp60pfxcG_w-tWWsbHYHwal/s200/TIAS%20Logo.png" alt="TIAS Logo">
-  </div>
-  <h1>Technology Integrated Automated Solution<br>Modern Home & Security Solutions</h1>
-</div>
-
-<!-- Header -->
 <header>
   <div class="logo">
     <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhx5qd_VIv2EjrNhDrQYwr_Gw5OyS-wOVwNMRcADwyIWTyHOMU1NrSJAajQtH8Vsg1h0H1CNoGWlV7cs5FSNegTsjOtwzco14dCnp6ZiOc5mlxAHjT0y6lZS6KHqbOg53RsnQT7kFE4F9IJf0J77iOrowvt9xKX9CqdbsgJsxp60pfxcG_w-tWWsbHYHwal/s200/TIAS%20Logo.png" alt="TIAS Logo">
@@ -161,56 +249,181 @@ footer{background:#375161;color:#2ea6b6;text-align:center;padding:1.5rem;font-si
     <ul>
       <li><a href="#home">Home</a></li>
       <li><a href="#services">Services</a></li>
+      <li><a href="#counter">Achievements</a></li>
+      <li><a href="#projects">Projects</a></li>
+      <li><a href="#reviews">Reviews</a></li>
+      <li><a href="#social">Social</a></li>
       <li><a href="#contact">Contact</a></li>
     </ul>
   </nav>
 </header>
 
-<!-- Hero -->
+<!-- Home Section -->
+<!-- Home Section -->
 <section id="home" class="hero">
   <div class="hero-container">
     <div class="hero-content">
       <h1>Technology Integrated Automated Solution - Modern Home & Security Solutions</h1>
-      <p>Experts in CCTV, Networking, VLAN, WLAN, Printers, and Smart Home Automation for safer, smarter, and more connected living.</p>
+      <p>
+        Experts in CCTV, Networking, VLAN, WLAN, Printers, and Smart Home
+        Automation for safer, smarter, and more connected living.
+      </p>
       <a href="#contact" class="btn">Get Started</a>
     </div>
+
     <div class="hero-image">
-      <img src="https://blogger.googleusercontent.com/img/a/AVvXsEiWjCddzC9lKlxzLqhbdgbOUYx05Z2vHIG-OsVmduMdWmUe4D5xOeZuhFYkZsAmf-uK5q8jOFDiyAJWOtk6JeCEj51jzv4HAAIIOglovkuLb4iY3Iv1TViyor3tN4tOU63Etfbp0nDMMnxx3YqowGcJiUWZH2JW93iZqxmnylK-BaplsMFuQk1Dp-n0Aw=s1064" alt="Home Automation">
+      <img
+        src="https://blogger.googleusercontent.com/img/a/AVvXsEiWjCddzC9lKlxzLqhbdgbOUYx05Z2vHIG-OsVmduMdWmUe4D5xOeZuhFYkZsAmf-uK5q8jOFDiyAJWOtk6JeCEj51jzv4HAAIIOglovkuLb4iY3Iv1TViyor3tN4tOU63Etfbp0nDMMnxx3YqowGcJiUWZH2JW93iZqxmnylK-BaplsMFuQk1Dp-n0Aw=s1064"
+        alt="Home Automation"
+      />
     </div>
   </div>
 </section>
 
+<!-- Services -->
+<section id="services">
+  <h2>Our Services</h2>
+  <div class="grid">
+    <div class="card"><img src="https://visionbot.com/wp-content/uploads/2023/10/360_F_310598572_aLBURiW3k45bxmogp5FxoMtYVszpL6Vm.jpg"><h3>CCTV Installation</h3><p>Advanced high-definition surveillance systems with remote access and night vision for complete protection.</p></div>
+    <div class="card"><img src="https://interfacesystems.com/wp-content/uploads/2023/02/managed-wifi-switches-hero.jpg"><h3>Networking Solutions</h3><p>Design and configuration of secure LAN, VLAN, and WLAN networks ensuring smooth connectivity.</p></div>
+    <div class="card"><img src="https://cdn.homecrux.com/wp-content/uploads/2015/12/DIY-home-automation-system-1.jpg"><h3>Home Automation</h3><p>Smart lighting, voice control, and integrated IoT solutions for modern living spaces.</p></div>
+    <div class="card"><img src="https://jimsit.com.au/wp-content/uploads/Business-Printer-Setup-3.jpg.webp"><h3>Printer Setup</h3><p>Printer installation, wireless setup, and troubleshooting for all major brands.</p></div>
+    <div class="card"><img src="https://img.freepik.com/free-photo/electrician-overalls-focused-work-switchboard-with-fuses-using-tablet_169016-66859.jpg"><h3>Security Maintenance</h3><p>Periodic inspections and upgrades to ensure uninterrupted system performance.</p></div>
+    <div class="card"><img src="https://t3.ftcdn.net/jpg/06/35/51/00/360_F_635510016_XpXdhunwMfL9mPmGyd6v3H0oFM8S2ia6.jpg"><h3>IT Consulting</h3><p>Tailored tech advice and setup strategies for offices, retail, and industry.</p></div>
+    <div class="card"><img src="https://t4.ftcdn.net/jpg/01/75/38/61/360_F_175386116_rtzzWxQI0nU62wqZhRC8aGATBBlzqWeY.jpg"><h3>Surveillance Analytics</h3><p>AI-powered video monitoring and behavior analysis for advanced safety.</p></div>
+    <div class="card"><img src="https://static0.makeuseofimages.com/wordpress/wp-content/uploads/2012/07/Home-Wi-Fi-Optimization-Featured.jpg"><h3>Wi-Fi Optimization</h3><p>Enhance signal strength, manage bandwidth, and eliminate dead zones effectively.</p></div>
+  </div>
+</section>
+
+<!-- Achievements -->
+<section id="counter">
+  <h2>Our Achievements</h2>
+  <div class="counters">
+    <div><div class="counter" data-target="500">0</div><div class="counter-label">Projects Completed</div></div>
+    <div><div class="counter" data-target="300">0</div><div class="counter-label">Happy Clients</div></div>
+    <div><div class="counter" data-target="50">0</div><div class="counter-label">Awards Won</div></div>
+  </div>
+</section>
+
+<!-- Projects -->
+<section id="projects">
+  <h2>Recent Projects</h2>
+  <div class="grid">
+    <div class="card"><img src="https://architectureupdate.in/wp-content/uploads/2025/05/special-feature-Hikvision-project-pic-1.jpg"><h3>Smart Apartment Automation</h3><p>Fully automated lighting, temperature, and security for a modern residential complex.</p></div>
+    <div class="card"><img src="https://technoeyenet.com/wp-content/uploads/2018/06/cctv-1144371_1280-1024x678.jpg"><h3>Corporate CCTV Installation</h3><p>Installed 120+ surveillance cameras and monitoring hubs for an IT park.</p></div>
+    <div class="card"><img src="https://www.techaptiva.com/wp-content/uploads/2022/06/new-IT-office.jpg"><h3>Office Networking Setup</h3><p>Designed and deployed secure VLANs with high-speed internet and data protection.</p></div>
+  </div>
+</section>
+
+<!-- Reviews -->
+<section id="reviews">
+  <h2>Client Reviews</h2>
+  <div class="carousel">
+    <div class="carousel-inner" id="reviewCarousel">
+      <div class="card"><img src="https://media.istockphoto.com/id/1144644565/photo/portrait-of-a-female-business-executive.jpg?s=612x612&w=0&k=20&c=CEclszPV20PssA2-I26jBWpGhVy8qLhO4oo6pqdOntE="><h3>Mitali Paul</h3><div class="stars">★★★★★</div><p>“TIAS completely transformed my home with advanced security systems and automation features that make daily life so much easier.”</p></div>
+      <div class="card"><img src="https://plus.unsplash.com/premium_photo-1722682239201-21c8173e776b?ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MXx8aW5kaWFuJTIwYnVzaW5lc3MlMjBtYW58ZW58MHx8MHx8fDA%3D&fm=jpg&q=60&w=3000"><h3>Rahul Singh</h3><div class="stars">★★★★☆</div><p>“Fantastic experience! The staff explained everything clearly and the setup was smooth.”</p></div>
+      <div class="card"><img src="https://media.istockphoto.com/id/1213122500/photo/image-of-young-handsome-hindu-man-in-early-20s-taking-selfie-with-phone-camera-holding-mobile.jpg?s=612x612&w=0&k=20&c=lU02dqId7GzmBSFjes9ZksBlaB5orrxsS8Arjg5PCg8="><h3>Rohit Sen</h3><div class="stars">★★★★★</div><p>“TIAS exceeded my expectations with their expertise and dedication. Perfect automation setup.”</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- Social -->
+<section id="social">
+  <h2>Follow Us</h2>
+  <div class="grid">
+    <div>
+      <a href="https://www.facebook.com/profile.php?id=61582841316547" target="_blank" aria-label="Facebook">
+        <img src="https://cdn-icons-png.flaticon.com/512/733/733547.png" alt="Facebook">
+      </a>
+    </div>
+    <div>
+      <a href="https://www.instagram.com/tias.officialsiliguri/" target="_blank" aria-label="Instagram">
+        <img src="https://cdn-icons-png.flaticon.com/512/733/733558.png" alt="Instagram">
+      </a>
+    </div>
+    <div>
+      <a href="https://www.linkedin.com/in/tias-31a7a6390/" target="_blank" aria-label="LinkedIn">
+        <img src="https://cdn-icons-png.flaticon.com/512/733/733561.png" alt="LinkedIn">
+      </a>
+    </div>
+    <div>
+      <a href="https://x.com/Tiasofficialslg" target="_blank" aria-label="Twitter">
+        <img src="https://cdn-icons-png.flaticon.com/512/733/733579.png" alt="Twitter">
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- Contact -->
+<section id="contact">
+  <h2>Contact Us</h2>
+  <div class="grid contact">
+    
+    <!-- Contact Information + Map -->
+    <div class="card">
+      <h3>Get in Touch</h3>
+      <p><strong>Email:</strong> <a href="mailto:info@tiastech.in">info@tiastech.in</a></p>
+      <p><strong>Phone:</strong> +91-9475207611</p>
+      <p><strong>Address:</strong> South Ektisal, Siliguri, West Bengal, India</p>
+      
+      <!-- Embedded Google Map -->
+      <div style="margin-top:1rem;">
+        <iframe 
+          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d14406.99638529347!2d88.4539465!3d26.720833!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x39e4411096f858b3%3A0x2e16c1f3d4fdce3c!2sTIAS!5e0!3m2!1sen!2sin!4v1731222000000!5m2!1sen!2sin" 
+          width="100%" 
+          height="300" 
+          style="border:0; border-radius:10px;" 
+          allowfullscreen="" 
+          loading="lazy" 
+          referrerpolicy="no-referrer-when-downgrade">
+        </iframe>
+      </div>
+    </div>
+
+    <!-- Contact Form -->
+    <div class="card">
+      <h3>Send a Message</h3>
+      <form action="https://formspree.io/f/xdkpanaw" method="POST">
+        <input type="text" name="name" placeholder="Your Name" required>
+        <input type="tel" name="phone" placeholder="Your Contact Number" pattern="[0-9]{10}" title="Enter a valid 10-digit number" required>
+        <input type="email" name="email" placeholder="Your Email" required>
+        <textarea name="message" rows="5" placeholder="Your Message" required></textarea>
+        <button type="submit">Send Message</button>
+      </form>
+    </div>
+
+  </div>
+</section>
+
+
 <footer>
-  <p>© 2025 TIAS. All Rights Reserved.</p>
+  <p>© 2025 TIAS. All Rights Reserved. | <a href="#">Privacy Policy</a></p>
 </footer>
 
 <script>
-// Flash intro animation
-window.addEventListener('load', () => {
-  const tl = gsap.timeline({ defaults: { ease: "power2.out" } });
-  tl.to(".flash-logo", { opacity: 1, scale: 1.2, duration: 1 })
-    .to(".flash-logo", { scale: 1, boxShadow: "0 0 40px #00e6e6", duration: 0.5 })
-    .to(".flash-intro h1", { opacity: 1, y: -10, duration: 1 }, "-=0.5")
-    .to(".flash-intro", { opacity: 0, duration: 1.2, delay: 1 })
-    .set(".flash-intro", { display: "none" });
+/* Counter Animation */
+const counters=document.querySelectorAll('.counter');
+counters.forEach(counter=>{
+  const update=()=>{
+    const target=+counter.getAttribute('data-target');
+    const c=+counter.innerText;
+    const inc=target/200;
+    if(c<target){counter.innerText=Math.ceil(c+inc);setTimeout(update,30);}
+    else counter.innerText=target+'+';}
+  update();
 });
 
-// Mobile menu
-const menuToggle = document.getElementById('menuToggle');
-const navbar = document.getElementById('navbar');
-menuToggle.addEventListener('click', () => navbar.classList.toggle('active'));
+/* Carousel Auto Slide */
+let i=0;
+const carousel=document.getElementById('reviewCarousel');
+const total=document.querySelectorAll('#reviewCarousel .card').length;
+setInterval(()=>{i=(i+1)%total;carousel.style.transform=`translateX(-${i*100}%)`;},5000);
+
+/* Mobile Menu Toggle */
+const menuToggle=document.getElementById('menuToggle');
+const navbar=document.getElementById('navbar');
+menuToggle.addEventListener('click',()=>{navbar.classList.toggle('active');});
 </script>
+
 </body>
 </html>
-
-
-
-
-
-
-
-
-
-
-
-
