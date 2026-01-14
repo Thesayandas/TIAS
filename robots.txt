@@ -1,4 +1,5 @@
 User-agent:*
-Disallow:
+allow:
 
 Sitemap: https://tiastech.in/sitemap.xml
+
