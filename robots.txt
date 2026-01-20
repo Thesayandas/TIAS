@@ -1,5 +1,9 @@
-User-agent:*
-allow:
+User-agent: *
+Disallow: /includes/
 
-Sitemap: https://tiastech.in/sitemap.xml
+User-agent: Googlebot
+Allow: /includes/
+
+Sitemap: https://www.tiastech.in/sitemap.xml
+
 
