@@ -5,5 +5,3 @@ User-agent: Googlebot
 Allow: /includes/
 
 Sitemap: https://www.tiastech.in/sitemap.xml
-
-
