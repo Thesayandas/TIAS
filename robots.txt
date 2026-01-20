@@ -1,7 +1,7 @@
 User-agent: *
-Disallow: /includes/
+Allow: /
 
-User-agent: Googlebot
-Allow: /includes/
-
+# Standard robots.txt for search engine crawling
+# Fixes the 'Content-Signal' unknown directive error
 Sitemap: https://www.tiastech.in/sitemap.xml
+
