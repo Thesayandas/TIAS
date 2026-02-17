@@ -74,9 +74,9 @@
 </style>
 
 <body class="antialiased m-0 p-0">
-	<header class="fixed top-0 left-0 w-full z-50 transition-all duration-300" x-data="{open:false, atTop:true}"
-		@scroll.window="atTop = (window.pageYOffset < 50)"
-		:class="atTop ? 'bg-cream/90 backdrop-blur-sm' : 'bg-white/90 backdrop-blur-md shadow-md py-2'">
+	<header class="fixed top-0 left-0 w-full z-50 transition-all duration-300 glass-navbar"
+		x-data="{open:false, atTop:true}" @scroll.window="atTop = (window.pageYOffset < 50)"
+		:class="atTop ? 'py-4' : 'shadow-md py-2'">
 		<div class="max-w-screen-xl mx-auto px-6">
 
 			<div class="flex items-center justify-between py-2">
